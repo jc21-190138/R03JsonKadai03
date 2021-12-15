@@ -27,7 +27,17 @@ public class GetPointServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+   
+    
+    
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int point=123;
+		
+		request.setAttribute("POINT",point);
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/getPoint.jsp");
 		rd.forward(request, response);
 	}
