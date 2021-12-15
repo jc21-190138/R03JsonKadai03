@@ -25,7 +25,7 @@ public class GetPointServlet extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @ see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
    
     
