@@ -58,5 +58,5 @@ public class GetPointServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
+//aa
 }
