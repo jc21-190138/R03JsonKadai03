@@ -77,7 +77,7 @@ public class GetPointServlet extends HttpServlet {
 		PreparedStatement at = con.prepareStatement("insert ignore into point_table(tenpo_id,user_id,point)values(?,?,500)");
 		at.setString(1,tenpoid);
 		at.setString(2,userid);
-		ResultSet as=at.executeQuery();
+		at.executeUpdate();
 			
 		PreparedStatement st = con.prepareStatement("SELECT * FROM point_table WHERE tenpo_id = ? and user_id=?");
 		
