@@ -72,12 +72,19 @@ public class GetPointServlet extends HttpServlet {
 				list1.add(s);
 				
 			}*/
-			
+			String tenpoid = request.getParameter("TENPO_ID");
+			String userid = request.getParameter("USER_ID");
+		PreparedStatement at = con.prepareStatement("insert ignore into point_table(tenpo_id,user_id,point)values(?,?,500)");
+		at.setString(1,tenpoid);
+		at.setString(2,userid);
+		ResultSet as=at.executeQuery();
 			
 		PreparedStatement st = con.prepareStatement("SELECT * FROM point_table WHERE tenpo_id = ? and user_id=?");
 		
-		st.setString(1,"2");//ここにqrコードのデータを入れる
-		st.setString(2,"3");
+
+		
+		st.setString(1,tenpoid);//ここにqrコードのデータを入れる
+		st.setString(2,userid);
 		ResultSet rs=st.executeQuery();
 		
 		/*List<String[]> list = new ArrayList<>();
