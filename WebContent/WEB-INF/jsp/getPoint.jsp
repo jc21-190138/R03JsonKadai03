@@ -1,3 +1,7 @@
 <%@ page language="java" contentType="application/json; charset=UTF-8"
     pageEncoding="UTF-8"%>
-{"POINT":3580}
+<%
+    //int POINT = (int)request.getAttribute("POINT");
+	String POINT = (String)request.getAttribute("POINT");
+%>
+{"POINT":<%= POINT %>}
