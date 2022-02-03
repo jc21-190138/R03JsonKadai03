@@ -28,6 +28,18 @@ public class GetTicketListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String code ="AJJFIGEB43";
+		int id=8;
+		String name ="替え玉無料券";
+		int point = 500;
+		
+		request.setAttribute("code",code);
+		request.setAttribute("id",id);
+		request.setAttribute("name",name);
+		request.setAttribute("point",point);
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/getTicketList.jsp");
 		rd.forward(request, response);
 	}
