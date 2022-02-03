@@ -56,40 +56,44 @@ public class GetPointServlet extends HttpServlet {
 			DataSource ds = (DataSource)ic.lookup(
 					"java:/comp/env/jdbc/jsonkadai03");
 			Connection con = ds.getConnection();
-			String point=null;*/							
-			//↑↑contextを使用したデータベース接続↑↑
+			String point=null;	*/					
+		//↑↑contextを使用したデータベース接続↑↑
 			
 		
 
-			//↓↓servlet内でのデータベース接続↓↓
+		//↓↓servlet内でのデータベース接続↓↓
 		try {
 			
 			Class.forName(driverName);
 			Connection con=DriverManager.getConnection(url,id,pass);
 			String point=null;
-			//↑↑servlet内でのデータベース接続↑↑
+		//↑↑servlet内でのデータベース接続↑↑
 			
+		//↓↓店舗IDとユーザーIDの取得↓↓
 			String tenpoid = request.getParameter("TENPO_ID");
 			String userid = request.getParameter("USER_ID");
+		//↑↑店舗IDとユーザーIDの取得↑↑
+			
+		//↓↓ユーザーIDがpoint_tableに登録されていない場合はpoint_tableにユーザーを追加する↓↓
 		PreparedStatement at = con.prepareStatement("insert ignore into point_table(tenpo_id,user_id,point)values(?,?,500)");
 		at.setString(1,tenpoid);
 		at.setString(2,userid);
 		at.executeUpdate();
-			
-		PreparedStatement st = con.prepareStatement("SELECT * FROM point_table WHERE tenpo_id = ? and user_id=?");
+		//↑↑ユーザーIDがpoint_tableに登録されていない場合はpoint_tableにユーザーを追加する↑↑
 		
-
+		PreparedStatement pt = con.prepareStatement("insert ignore into tenpo_table(tenpo_id,tenpo_name)values(?,null)");
+		pt.setString(1, tenpoid);
+		pt.executeUpdate();
 		
-		st.setString(1,tenpoid);//ここにqrコードのデータを入れる
+		PreparedStatement st = con.prepareStatement("SELECT * FROM point_table WHERE tenpo_id = ? and user_id=?");	
+		st.setString(1,tenpoid);
 		st.setString(2,userid);
 		ResultSet rs=st.executeQuery();
-		
-		
+				
 		if(rs.next()){
 			point= rs.getString("point");
 			}
-		
-		
+			
 		st.close();
 		con.close();
 		
