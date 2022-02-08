@@ -36,6 +36,8 @@ public class GetTicketListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		response.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("utf-8");
 		//↓↓servlet内でのデータベース接続↓↓
 			PrintWriter out = response.getWriter();
 			final String driverName = "com.mysql.jdbc.Driver";
