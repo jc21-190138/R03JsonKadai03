@@ -21,6 +21,10 @@ if(optList.isPresent()){
 {"CODE":"<%=code%>","ID":<%= id %>,"OptName":"<%= name %>","POINT":<%= point %>}
 ]--%>
 
+
+[
   <% for (String[] s : list){ %>
   {"ID":<%=s[0] %>,"OptName":"<%=s[1] %>","POINT":<%=s[2] %>} 
       <%} %>
+]
+  
