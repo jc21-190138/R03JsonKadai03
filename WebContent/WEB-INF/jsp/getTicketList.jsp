@@ -13,6 +13,11 @@ List<String[]> list=new ArrayList<>();
 if(optList.isPresent()){
 	list = optList.get();
 }
+/*
+String id = (String)request.getAttribute("ticketid");
+String name = (String)request.getAttribute("ticketname");
+String point = (String)request.getAttribute("ticketpoint");
+*/
 %>
 
 <%--[
@@ -22,9 +27,10 @@ if(optList.isPresent()){
 ]--%>
 
 
-[
-  <% for (String[] s : list){ %>
-  {"ID":<%=s[0] %>,"OptName":"<%=s[1] %>","POINT":<%=s[2] %>} 
-      <%} %>
+[ 
+<%
+for (String[] s : list){
+System.out.println("{\"ID\":"+s[0]+",\"OptName\":"+s[1]+",\"POINT\":"+s[2]+"}");
+}
+%>
 ]
-  

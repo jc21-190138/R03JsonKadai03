@@ -49,6 +49,9 @@ public class GetTicketListServlet extends HttpServlet {
 				Class.forName(driverName);
 				Connection con=DriverManager.getConnection(url,id,pass);
 				String point=null;
+				String ticketid = null;
+				String ticketname = null;
+				String ticketpoint =null;
 		//↑↑servlet内でのデータベース接続↑↑
 		
 		//↓↓店舗IDとユーザーIDの取得↓↓
@@ -82,8 +85,18 @@ public class GetTicketListServlet extends HttpServlet {
 				
 				
 				request.setAttribute("list",list);
-
-		
+				
+				/*if(result.next()) {
+					ticketid = result.getString("ticket_id");
+					ticketname = result.getString("ticket_name");
+					ticketpoint = result.getString("POINT");
+				}
+				request.setAttribute("ticketid", ticketid);
+				request.setAttribute("ticketname", ticketname);
+				request.setAttribute("ticketpoint", ticketpoint);*/
+				
+				
+				
 		
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/getTicketList.jsp");
 				rd.forward(request, response);
