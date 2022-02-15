@@ -26,11 +26,9 @@ String point = (String)request.getAttribute("ticketpoint");
 {"CODE":"<%=code%>","ID":<%= id %>,"OptName":"<%= name %>","POINT":<%= point %>}
 ]--%>
 
+<%out.println("[ ");%>
+<%for (String[] s : list){%>
 
-[ 
-<%
-for (String[] s : list){
-System.out.println("{\"ID\":"+s[0]+",\"OptName\":"+s[1]+",\"POINT\":"+s[2]+"}");
-}
-%>
-]
+{"ID":<%=s[0]%>,"OptName":"<%=s[1]%>","POINT":<%=s[2]%>},
+<%}%>
+<%out.println("] ");%>
