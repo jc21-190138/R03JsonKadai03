@@ -16,8 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
-
 /**
  * Servlet implementation class GetPointServlet
  */
@@ -63,6 +61,7 @@ public class GetPointServlet extends HttpServlet {
 
 		//↓↓servlet内でのデータベース接続↓↓
 		try {
+			
 			
 			Class.forName(driverName);
 			Connection con=DriverManager.getConnection(url,id,pass);
